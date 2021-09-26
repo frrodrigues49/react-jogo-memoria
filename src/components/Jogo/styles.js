@@ -15,6 +15,15 @@ export const ContainerNameUser = styled.div`
     font-size: 22px;
   }
 `;
+export const ButtonRanking = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`;
+export const ImageRanking = styled.img`
+  width: 50px;
+  height: 50px;
+`;
 export const Round = styled.div`
   color: #48536c;
   font-weight: bold;
@@ -61,4 +70,9 @@ export const Input = styled.input`
   border-radius: 4px;
   border: 1px solid #48536c;
   padding: 5px;
+`;
+export const ContainerRanking = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #48536c;
 `;
