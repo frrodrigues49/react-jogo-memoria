@@ -8,8 +8,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  height: 100vh;
-  display: flex;
+  height: 100vh; 
   background: #202737;
 }
 `;

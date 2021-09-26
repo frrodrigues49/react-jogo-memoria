@@ -19,11 +19,13 @@ export const shuffleArray = (arr) => {
 // TODO: criando o provider
 export default function CardProvider({ children }) {
   const [image, setImage] = useState(shuffleArray(images));
+  const [round, setRound] = useState(0);
 
   const restartGame = () => {
     const newGameNodes = shuffleArray(
       images.map((item) => {
         item.active = false;
+        item.selected = false;
         return item;
       })
     );
@@ -32,7 +34,9 @@ export default function CardProvider({ children }) {
   };
 
   return (
-    <CardContext.Provider value={{ image, setImage, restartGame }}>
+    <CardContext.Provider
+      value={{ image, setImage, round, setRound, restartGame }}
+    >
       {children}
     </CardContext.Provider>
   );
@@ -42,7 +46,7 @@ export default function CardProvider({ children }) {
 export function useImage() {
   const context = useContext(CardContext);
   if (!context) throw new Error("useImage must be used within a ImageProvider");
-  const { image, setImage, restartGame } = context;
+  const { image, setImage, round, setRound, restartGame } = context;
 
-  return { image, setImage, restartGame };
+  return { image, setImage, round, setRound, restartGame };
 }
