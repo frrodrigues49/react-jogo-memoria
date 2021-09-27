@@ -41,7 +41,6 @@ export const ContainerCard = styled.div`
 export const ButtonPlayAgain = styled.button`
   background-color: #5bc274;
   color: #48536c;
-  width: 10%;
   font-weight: bold;
   border: none;
   margin-top: 20px;
@@ -53,6 +52,9 @@ export const ButtonPlayAgain = styled.button`
   @media (max-width: 800px) {
     width: 100%;
   }
+`;
+export const ButtonPlayAgainModal = styled(ButtonPlayAgain)`
+  width: 100%;
 `;
 export const ButtonSave = styled.button`
   background-color: #5bc274;

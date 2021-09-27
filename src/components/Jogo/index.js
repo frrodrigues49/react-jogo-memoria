@@ -13,6 +13,7 @@ import {
   ContainerCard,
   Round,
   ButtonPlayAgain,
+  ButtonPlayAgainModal,
   ButtonSave,
   Input,
   ContainerRanking,
@@ -113,9 +114,9 @@ function Jogo() {
         <Modal title="Parabens" onClose={handleSuccess}>
           <h1>Você venceu!</h1>
           <span>Rodadas: {round}</span>
-          <ButtonPlayAgain onClick={handleSuccess}>
+          <ButtonPlayAgainModal onClick={handleSuccess}>
             Jogar Novamente
-          </ButtonPlayAgain>
+          </ButtonPlayAgainModal>
         </Modal>
       ) : null}
       {ranking ? (
