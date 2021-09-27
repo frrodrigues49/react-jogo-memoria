@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useImage } from "../../context/cardProvider";
 import Javascript from "../../assets/js-badge.svg";
+import api from "../../services/api";
 
 import { Container, ImageCard, ImageCardFace } from "./styles";
 
-function Cards({ setSuccess }) {
+function Cards({ setSuccess, userName }) {
   const [firstCard, setFirstCard] = useState(false);
   const [_, setSecondCard] = useState(false);
   const [lockCards, setLockCards] = useState(false);
@@ -84,6 +85,34 @@ function Cards({ setSuccess }) {
 
     if (totalCount === totalSelected) {
       setSuccess(true);
+      // grava o total da rodada e o nome do usuario
+      saveRanking();
+    }
+  };
+  const saveRanking = async () => {
+    const users = await api.get("users");
+    const isExist = users.data.filter(
+      (item) => item.name.toLocaleUpperCase() === userName.toLocaleUpperCase()
+    );
+
+    try {
+      if (isExist.length === 0) {
+        await api.post("users", {
+          name: userName.toLocaleUpperCase(),
+          ranking: round + 1,
+        });
+      } else {
+        const id = isExist.map((item) => item.id);
+        const userRound = isExist.map((item) => item.ranking);
+
+        if (Number(round) < Number(userRound)) {
+          await api.patch(`users/${Number(id)}`, {
+            ranking: round,
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Ops -", error);
     }
   };
 

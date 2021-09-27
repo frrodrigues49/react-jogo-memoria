@@ -76,3 +76,6 @@ export const ContainerRanking = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid #48536c;
 `;
+export const ColRanking = styled.div`
+  margin-top: 10px;
+`;
